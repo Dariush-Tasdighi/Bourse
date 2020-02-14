@@ -46,7 +46,7 @@
 			this.downloadFileButton.TabIndex = 0;
 			this.downloadFileButton.Text = "دانلود فایل اطلاعات";
 			this.downloadFileButton.UseVisualStyleBackColor = true;
-			this.downloadFileButton.Click += new System.EventHandler(this.button1_Click);
+			this.downloadFileButton.Click += new System.EventHandler(this.DownloadFileButton_Click);
 			// 
 			// contentTextBox
 			// 

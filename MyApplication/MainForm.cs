@@ -9,24 +9,17 @@ namespace MyApplication
 			InitializeComponent();
 		}
 
-		//public string RootPath { get; set; }
-
-		//public string RemoteUri { get; set; }
-
 		public string RemoteDownloadUri { get; set; }
 
 		public System.Windows.Forms.WebBrowser MyWebBrowser { get; set; }
 
 		private void MainForm_Load(object sender, System.EventArgs e)
 		{
-			//RemoteUri =
-			//	"http://www.tsetmc.com/Loader.aspx?";
-
 			RemoteDownloadUri =
 				"http://www.tsetmc.com/tsev2/data/Export-txt.aspx?";
 		}
 
-		private void button1_Click(object sender, System.EventArgs e)
+		private void DownloadFileButton_Click(object sender, System.EventArgs e)
 		{
 			System.Net.WebClient webClient = null;
 
@@ -37,7 +30,6 @@ namespace MyApplication
 
 				string remotePathName =
 					$"{ RemoteDownloadUri }t=i&a=1&b=0&i={ id }";
-
 
 				// **************************************************
 				webClient =
