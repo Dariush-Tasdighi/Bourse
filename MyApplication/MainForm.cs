@@ -9,9 +9,9 @@ namespace MyApplication
 			InitializeComponent();
 		}
 
-		public string RootPath { get; set; }
+		//public string RootPath { get; set; }
 
-		public string RemoteUri { get; set; }
+		//public string RemoteUri { get; set; }
 
 		public string RemoteDownloadUri { get; set; }
 
@@ -19,38 +19,11 @@ namespace MyApplication
 
 		private void MainForm_Load(object sender, System.EventArgs e)
 		{
-			RemoteUri =
-				"http://www.tsetmc.com/Loader.aspx?";
+			//RemoteUri =
+			//	"http://www.tsetmc.com/Loader.aspx?";
 
 			RemoteDownloadUri =
 				"http://www.tsetmc.com/tsev2/data/Export-txt.aspx?";
-		}
-
-		public static byte[] DecompressGZip(byte[] bytesToDecompress)
-		{
-			using (System.IO.Compression.GZipStream stream = new System.IO.Compression.GZipStream
-				(new System.IO.MemoryStream(bytesToDecompress), System.IO.Compression.CompressionMode.Decompress))
-			{
-				const int size = 4096;
-				byte[] buffer = new byte[size];
-
-				using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
-				{
-					int count;
-
-					do
-					{
-						count = stream.Read(buffer, 0, size);
-
-						if (count > 0)
-						{
-							memoryStream.Write(buffer, 0, count);
-						}
-					} while (count > 0);
-
-					return memoryStream.ToArray();
-				}
-			}
 		}
 
 		private void button1_Click(object sender, System.EventArgs e)
@@ -75,7 +48,8 @@ namespace MyApplication
 				byte[] result =
 					webClient.DownloadData(address: remotePathName);
 
-				byte[] decompressedResult = DecompressGZip(result);
+				byte[] decompressedResult =
+					Infrastructure.Utility.DecompressGZip(result);
 
 				contentTextBox.Text =
 					System.Text.Encoding.UTF8.GetString(decompressedResult);
